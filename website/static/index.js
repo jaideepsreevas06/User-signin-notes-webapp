@@ -5,7 +5,13 @@ function deleteNote(noteId) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then((_res) => {
-        window.location.href = "/";
+    }).then((response) => {
+        if (response.ok) {
+            window.location.href = "/";
+        } else {
+            console.error('Error deleting note:', response.status);
+        }
+    }).catch((error) => {
+        console.error('Error:', error);
     });
 }

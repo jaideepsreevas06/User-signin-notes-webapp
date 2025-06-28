@@ -33,3 +33,7 @@ def delete_note():
            db.session.delete(note)
            db.session.commit()
            return jsonify({})
+        else:
+            return jsonify({'error': 'Unauthorized'}), 403
+    else:
+        return jsonify({'error': 'Note not found'}), 404
